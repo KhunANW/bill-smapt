@@ -21,8 +21,8 @@ function calculate() {
 
     /* รายละเอียดค่าไฟ */
     iElectricDetail.innerHTML =
-        `จดมิเดอร์ครั้งก่อน ${dateBefore.value || "-"}<br>` +
-        `จดมิเดอร์ครั้งล่าสุด ${dateAfter.value || "-"}<br>` +
+        `จดมิเตอร์ครั้งก่อน ${dateBefore.value || "-"}<br>` +
+        `จดมิเตอร์ครั้งล่าสุด ${dateAfter.value || "-"}<br>` +
         `หน่วยที่ใช้`;
 
     /* ช่องหน่วย (ตรงบรรทัดของมัน) */
@@ -54,3 +54,4 @@ function downloadImage() {
         link.click();
     });
 }
+
