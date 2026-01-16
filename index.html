@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ระบบบิลหอพักสุภลักษณ์-มั่นชัยอพาร์ทเม้นท์</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- ===== ฟอร์ม ===== -->
+    <div class="form">
+        <h3>กรอกข้อมูลบิล</h3>
+
+        <label>เดือน / ปี</label>
+        <input type="month" id="month">
+
+        <label>เลขห้อง</label>
+        <input id="room">
+
+        <label>ค่าห้อง (บาท)</label>
+        <input type="number" id="rent" value="0">
+
+        <label>ค่าน้ำ (บาท)</label>
+        <input type="number" id="water" value="0">
+
+        <label>ค่าอื่น ๆ (WiFi)</label>
+        <input type="number" id="other" value="0">
+
+        <hr>
+
+        <label>วันที่อ่านมิเตอร์ก่อน</label>
+        <input type="date" id="dateBefore">
+
+        <label>วันที่อ่านมิเตอร์หลัง</label>
+        <input type="date" id="dateAfter">
+
+        <label>มิเตอร์ก่อน</label>
+        <input type="number" id="eBefore" value="0">
+
+        <label>มิเตอร์หลัง</label>
+        <input type="number" id="eAfter" value="0">
+
+        <label>ค่าไฟต่อหน่วย</label>
+        <input type="number" id="eRate" value="0">
+
+        <button onclick="calculate()">คำนวณบิล</button>
+    </div>
+
+    <!-- ===== ใบแจ้งหนี้ ===== -->
+    <div class="invoice" id="invoice">
+
+    <div class="bill-title">ใบแจ้งหนี้</div>
+    <div class="bill-subtitle">สุภลักษณ์-มั่นชัย อพาร์ทเม้นท์</div>
+
+    <table class="top-table">
+        <tr>
+            <td>
+                เลขห้อง<br>
+                <span id="iRoom">-</span>
+            </td>
+            <td>
+                ประจำเดือน<br>
+                <span id="iDate">-</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="bill-table">
+        <thead>
+            <tr>
+                <th width="6%">ลำดับ</th>
+                <th width="24%">รายการ</th>
+                <th width="36%">รายละเอียด</th>
+                <th width="18%">หน่วย</th>
+                <th width="16%">จำนวนเงิน</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="c">1</td>
+                <td>ค่าห้อง</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="r" id="iRent">0</td>
+            </tr>
+            <tr>
+                <td class="c">2</td>
+                <td>ค่าน้ำ</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="r" id="iWater">0</td>
+            </tr>
+            <tr>
+                <td class="c">3</td>
+                <td>ค่าไฟฟ้า</td>
+                <td id="iElectricDetail"></td>
+                <td id="iUnit"></td>
+                <td class="r" id="iElectric"></td>
+            </tr>
+            <tr>
+                <td class="c">4</td>
+                <td>ค่าอื่น ๆ</td>
+                <td>อินเทอร์เน็ต (WiFi)</td>
+                <td>-</td>
+                <td class="r" id="iOther">0</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="c"><b>รวมทั้งสิ้น</b></td>
+                <td class="r"><b id="iTotal">0</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="bill-note">
+        ** กรุณาชำระเงินไม่เกินวันที่ 5 ของทุกเดือน ถ้าเกินปรับวันละ 50.- **
+    </div>
+
+    <div class="bill-bank">
+        <img src=krungthai.png width=70 height=60><br>
+        ธนาคารกรุงไทย<br>
+        เลขบัญชี 501-1-44968-8<br>
+        นาย มั่นชัย เฟื่องฟูกิจการ
+    </div>
+    
+    <br><br>
+    <div class="download">
+        <button onclick="downloadImage()">ดาวน์โหลดบิลเป็นรูป</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
